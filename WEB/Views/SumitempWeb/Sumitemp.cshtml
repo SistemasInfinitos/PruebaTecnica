@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Sumitemp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewData["Title"] = "Tienda Pedalea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-3" style="margin-top:57px;">
+
+    <div class="card-header">
+        <i class="fa fa-table"></i> @ViewData["Title"] &emsp;
+        <button type="button" class="btn btn-success btn-xs align-items-xl-end" onclick="GetModalCrear('${response.model[i].personaID}')">
+            <i class="fa fa-pencil-square"></i>&nbsp;Nuevo&nbsp;&nbsp;
+        </button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        Get();
+    })
+    function Get() {
+            $.ajax({
+                url: '/api/SumitempApi/GetTes',
+                method: 'GET',
+                data: {},
+                traditional: true,
+                async: true,
+                dataType: 'JSON',
+                success: function (response) {
+                },
+                error: function (jQXHR) {
+                },
+                complete: function () 
+                {
+
+                }
+            });
+        }
+</script>
