@@ -170,15 +170,22 @@ namespace WEB.Controllers.Persona
                         {
                             model = await JsonSerializer.DeserializeAsync<int>(await response.Content.ReadAsStreamAsync(), options);
 
-                            if (model > 0)
+                            if (model ==1)
                             {
                                 responseClient.Success = true;
                                 responseClient.Mensaje = "Transacción exitosa!";
                                 return Ok(new { model, responseClient });
+                            }else
+                             if (model > 1)
+                            {
+                                responseClient.Success = false;
+                                responseClient.Mensaje = "error!";
+                                return Ok(new { model, responseClient });
                             }
                             else
                             {
-                                responseClient.Errors.Add("Acceso denegado!");
+                                responseClient.Success = true;
+                                responseClient.Errors.Add("Documeto ya existe!");
                                 return BadRequest(new { model, responseClient });
                             }
                         }

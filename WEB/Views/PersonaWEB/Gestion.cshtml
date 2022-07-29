@@ -47,24 +47,41 @@
         <div class="row col-md-12  ">
           <input type="text" class="form-control" id="PersonaID" hidden >
           <div class="col-md-3">
-            <label for="Identificacion" class="col-form-label">Identificacion:</label>
+            <label for="Identificacion" class="col-form-label">Identificacion<span style="color:red">*</span>:</label>
             <input type="text" class="form-control" id="Identificacion">         
           </div>
           <div class="col-md-3">
-            <label for="PrimerNombre" class="col-form-label">Primer Nombre:</label>
-            <input class="form-control" id="PrimerNombre">
+            <label for="PrimerNombre" class="col-form-label">Primer Nombre<span style="color:red">*</span>:</label>
+            <input class="form-control" id="PrimerNombre" required>
           </div>
           <div class="col-md-3">
             <label for="SegundoNombre" class="col-form-label">Segundo Nombre:</label>
             <input class="form-control" id="SegundoNombre">
           </div> 
           <div class="col-md-3">
-            <label for="PrimerApellido" class="col-form-label">Primer Apellido:</label>
-            <input class="form-control" id="PrimerApellido">
+            <label for="PrimerApellido" class="col-form-label">Primer Apellido<span style="color:red">*</span>:</label>
+            <input class="form-control" id="PrimerApellido" required>
           </div>         
           <div class="col-md-3">
             <label for="SegundoApellido" class="col-form-label">Segundo Apellido:</label>
             <input class="form-control" id="SegundoApellido">
+          </div> 
+          <div class="col-md-3">
+            <label for="FechaNaciemiento" class="col-form-label">Fecha Naciemiento<span style="color:red">*</span>:</label>
+            <input class="form-control" id="FechaNaciemiento">
+          </div> 
+          <div class="col-md-3">
+            <label for="Direccion" class="col-form-label">Direccion:</label>
+            <input class="form-control" id="Direccion">
+          </div>  
+          <div class="col-md-3">
+            <label for="Telefono" class="col-form-label">Telefono:</label>
+            <input class="form-control" id="Telefono">
+          </div>   
+          
+          <div class="col-md-3">
+            <label for="Correo" class="col-form-label">Correo:</label>
+            <input class="form-control" id="Correo">
           </div>  
           <div class="col-md-3">
             <label for="EsCliente" class="col-form-label">Es Cliente:</label>
@@ -111,16 +128,62 @@
      $("#btnCrear").click(function () {
           personaID = parseInt($("#PersonaID").val());
 
+         var PrimerNombre = $("#PrimerNombre").val();
+         var PrimerApellido = $("#PrimerApellido").val();
+         var Identificacion = $("#Identificacion").val();
+         var FechaNaciemiento = $("#FechaNaciemiento").val();
+         var Direccion = $("#Direccion").val();
+         var Telefono = $("#Telefono").val();
+         var Correo = $("#Correo").val();
+
+         if (PrimerNombre==undefined || PrimerNombre=="") {
+             toastr.warning(" Primer Nombre es Obligatorio");
+             return;
+         }
+         if (Identificacion==undefined || Identificacion=="") {
+             toastr.warning(" Identificacion es Obligatorio");
+             return;
+         } 
+         if (PrimerApellido==undefined || PrimerApellido=="") {
+             toastr.warning(" Primer Apellido es Obligatorio");
+             return;
+         }         
+         if (FechaNaciemiento==undefined || FechaNaciemiento=="") {
+             toastr.warning("Fecha Naciemiento es Obligatorio");
+             return;
+         }
+         if (PrimerNombre.match(/^[a-zA-Z]+$/)== null) 
+         {
+             toastr.warning("el Primer Nombre no puede contener caracteres distintos a letras");
+             return { descripcionError: "el Primer Nombre no puede contener caracteres distintos a letras" };
+         }
+
+          if (PrimerApellido.match(/^[a-zA-Z]+$/)== null) 
+         {
+             toastr.warning("el Primer Apellido no puede contener caracteres distintos a letras");
+             return { descripcionError: "el Primer Apellido no puede contener caracteres distintos a letras" };
+         }
+
+         if (Identificacion.match(/^[0-9a-zA-Z]+$/)== null) 
+         {
+             toastr.warning("la Identificacion no puede contener caracteres distintos a letras y numeros");
+             return { descripcionError: "la Identificacion no puede contener caracteres distintos a letras y numeros" };
+         }
+
          if (personaID > 0) { } else {personaID=0 }
         var data = {
             PersonaID: personaID,
             Identificacion: $("#Identificacion").val(),
-            PrimerNombre: $("#PrimerNombre").val(),
+            PrimerNombre: PrimerNombre ,
             SegundoNombre: $("#SegundoNombre").val(),
-            PrimerApellido: $("#PrimerApellido").val(),
+            PrimerApellido: PrimerApellido,
             SegundoApellido: $("#SegundoApellido").val(),
             EsCliente: $("#EsCliente").prop("checked"),
             EsProveedor: $("#EsProveedor").prop("checked"),
+            FechaNaciemiento: FechaNaciemiento,
+            Direccion: Direccion,
+            Telefono: Telefono,
+            Correo: Correo,
         }
         
         var value = JSON.stringify(data);
