@@ -85,3 +85,53 @@ namespace WEB.Controllers.Prueba
         }
     }
 }
+//1 ¿Cuál es el resultado después de ejecutar el algoritmo?
+//R / D Resultado 1: 69 Resultado 2: 49,8
+//------------------------------------------------------------------------------
+//2. ¿Cuál de las siguientes opciones muestra la información completa de la persona?
+// NINGUNO-TODOS
+//--------------------------------------------------------------------------------------------
+//3.El concepto de las Siglas “M.V.C.” corresponde con la siguiente definición:
+//a.Es un patrón de diseño útil para componentes de presentación.
+//----------------------------------------------------------------------------------------------
+//4. ¿Cuál de los siguientes patrones de diseño garantiza que un objeto se pueda instanciar una única
+//vez en tiempo de ejecución?
+//a. El patrón de diseño “Factory”
+//b. El patrón de diseño “Unique Object”
+//c. El patrón de diseño “Repository”
+//d. Ninguna de las anteriores
+//-------------------------------------------------------------------------------------------------------
+//5.¿Cuál de las siguientes definiciones corresponde a las siglas “O.R.M.”?
+//. Es una técnica de programación que permite convertir datos entre una base de datos relacional y el
+//sistema de tipos soportado por un lenguaje de programación.
+//----------------------------------------------------------------------------------------------------------
+//6. ¿Cuál de las siguientes sentencias SQL, cumple con la siguiente consulta?: Consultar lista de
+//empleados que tienen registrados un número de órdenes mayor o igual a cinco (5).
+//    B)
+//SELECT Empleados.Nombre, COUNT(Ordenes.ID) AS
+//CantidadOrden
+//FROM (Ordenes
+//INNER JOIN Empleados ON Ordenes.EmpleadoId =
+//Empleados.ID)
+//GROUP BY Empleados.Nombre
+//HAVING COUNT(Ordenes.ID) >= 5;
+
+//7.Consultar los empleados por nombre y apellido, cuya edad no se encuentren en el rango entre 40
+//y 50 años. ¿Cuál de las siguientes sentencias SQL, cumple con la condición anterior?:
+//--d.
+//SELECT Empleados.Nombre, Empleados.Apellido, datediff(yy, Empleados.FechaNacimiento, GETDATE())edad
+//FROM Empleados
+//WHERE (datediff(yy,Empleados.FechaNacimiento,GETDATE())not Between 40 and 50)
+
+
+//. Consultar empleados cuyos nombres comienzan con la palabra "Lu". ¿Cuál de las siguientes
+//sentencias SQL, cumple con la condición anterior?:
+//c 
+//SELECT Empleados.Nombre
+//FROM Empleados
+//WHERE Empleados.Nombre LIKE 'Lu%';
+
+
+//. Realizar una consulta que contenga el nombre del empleado y la cantidad de órdenes que tenga
+//asociadas, adicionalmente, se deben incluir los empleados que no contienen órdenes asociadas.
+//¿Cuál de las siguientes sentencias SQL, cumple con la condición anterior?:
