@@ -170,7 +170,7 @@ namespace WEB.Controllers.Persona
                         {
                             model = await JsonSerializer.DeserializeAsync<int>(await response.Content.ReadAsStreamAsync(), options);
 
-                            if (model ==1)
+                            if (model ==2|| model == 1)
                             {
                                 responseClient.Success = true;
                                 responseClient.Mensaje = "Transacción exitosa!";
