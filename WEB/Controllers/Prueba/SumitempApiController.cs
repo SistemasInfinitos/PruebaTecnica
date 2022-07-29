@@ -16,7 +16,7 @@ namespace WEB.Controllers.Prueba
         {
             AuthResult responseClient = new AuthResult();
              responseClient.ResponseTex =await Get();
-            return BadRequest(new {responseClient});
+            return Ok(new {responseClient});
         }
         public async Task<string> Get()
         {
@@ -38,12 +38,24 @@ namespace WEB.Controllers.Prueba
             DateTime fechaActual = new DateTime(2018, 3, 23);
             foreach (Persona p in personas)
             {
-                valor = calcularEdad(p.FechaNacimiento, fechaActual);
+                valor = calcularEdad( p.FechaNacimiento, fechaActual);
                 if (valor > Resultado1) { Resultado1 = valor; }
                 Resultado2 = Resultado2 + valor;
             }
-            Resultado2 = Resultado2 / personas.Length;
+            Resultado2 = Resultado2 / personas.Count;
             return "Resultado 1:" +Resultado1 + "Resultado 2:" +Resultado2;
+        }
+
+
+        private static int calcularEdad(DateTime FechaNacimiento,DateTime fechaActual) 
+        {
+            //DateTime now = DateTime.Today;
+            //var now = fechaActual.Day;
+
+            int edad = fechaActual.Year - FechaNacimiento.Year;
+            if (DateTime.Today < FechaNacimiento.AddYears(edad))
+                edad--;
+            return edad;
         }
         private static DateTime DateTime2(string value)
         {
