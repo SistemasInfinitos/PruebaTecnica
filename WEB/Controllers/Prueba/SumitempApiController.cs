@@ -2,6 +2,7 @@
 using CanonicalModel.Model.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using System.Text.Json;
 
 namespace WEB.Controllers.Prueba
@@ -10,12 +11,18 @@ namespace WEB.Controllers.Prueba
     [ApiController]
     public class SumitempApiController : ControllerBase
     {
+        /// <summary>
+        ///1 ¿Cuál es el resultado después de ejecutar el algoritmo?
+        ///R / D Resultado 1: 69 Resultado 2: 49,8
+        /// </summary>
+        /// <returns></returns>
         [Route("[action]", Name = "GetTest")]
         [HttpGet]
         public async Task<IActionResult> GetTest()
         {
             AuthResult responseClient = new AuthResult();
              responseClient.ResponseTex =await Get();
+            GetPersona();
             return Ok(new {responseClient});
         }
         public async Task<string> Get()
@@ -46,7 +53,6 @@ namespace WEB.Controllers.Prueba
             return "Resultado 1:" +Resultado1 + "Resultado 2:" +Resultado2;
         }
 
-
         private static int calcularEdad(DateTime FechaNacimiento,DateTime fechaActual) 
         {
             //DateTime now = DateTime.Today;
@@ -57,9 +63,25 @@ namespace WEB.Controllers.Prueba
                 edad--;
             return edad;
         }
+
         private static DateTime DateTime2(string value)
         {
             return Convert.ToDateTime(value);
+        }
+
+        /// <summary>
+        /// 2. ¿Cuál de las siguientes opciones muestra la información completa de la persona?
+        /// </summary>
+        private static void GetPersona()
+        {
+            Persona p = new();
+            DateTime fechaActual = new DateTime(2018, 3, 23);
+            p = (new Persona { identificacion = "79658321", nombres = "Pedro Estiven", apellidos = "Gil Barón", FechaNacimiento = DateTime2("1979,10,26") });
+
+            var A=("Identificación: { 0}; Nombres: { 1}; Apellidos: { 2}; Edad:{ 3}", p.identificacion, p.nombres, p.apellidos, calcularEdad(p.FechaNacimiento, fechaActual));
+            var B=("Identificación: " +p.identificacion + " Nombres: " + p.nombres + "Apellidos: " +p.apellidos + "Edad: " +p.edad);
+            var C=(String.Concat("Identificación: ", p.identificacion, "Nombres: ", p.nombres, "Apellidos: ", p.apellidos, "Edad: ", p.edad));
+            //D a y b son correctas.
         }
     }
 }
