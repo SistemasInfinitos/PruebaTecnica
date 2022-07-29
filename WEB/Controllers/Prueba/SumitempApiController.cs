@@ -115,7 +115,7 @@ namespace WEB.Controllers.Prueba
 //Empleados.ID)
 //GROUP BY Empleados.Nombre
 //HAVING COUNT(Ordenes.ID) >= 5;
-
+//------------------------------------------------------------------------------------------------------------
 //7.Consultar los empleados por nombre y apellido, cuya edad no se encuentren en el rango entre 40
 //y 50 años. ¿Cuál de las siguientes sentencias SQL, cumple con la condición anterior?:
 //--d.
@@ -123,16 +123,16 @@ namespace WEB.Controllers.Prueba
 //FROM Empleados
 //WHERE (datediff(yy,Empleados.FechaNacimiento,GETDATE())not Between 40 and 50)
 
-
-//. Consultar empleados cuyos nombres comienzan con la palabra "Lu". ¿Cuál de las siguientes
+//----------------------------------------------------------------------------------------------------------
+//8. Consultar empleados cuyos nombres comienzan con la palabra "Lu". ¿Cuál de las siguientes
 //sentencias SQL, cumple con la condición anterior?:
 //c 
 //SELECT Empleados.Nombre
 //FROM Empleados
 //WHERE Empleados.Nombre LIKE 'Lu%';
+//__________________________________________________________________________________________________________
 
-
-//. Realizar una consulta que contenga el nombre del empleado y la cantidad de órdenes que tenga
+//9. Realizar una consulta que contenga el nombre del empleado y la cantidad de órdenes que tenga
 //asociadas, adicionalmente, se deben incluir los empleados que no contienen órdenes asociadas.
 //¿Cuál de las siguientes sentencias SQL, cumple con la condición anterior?:
 //d
@@ -141,3 +141,22 @@ namespace WEB.Controllers.Prueba
 //FROM Empleados LEFT JOIN Ordenes ON Empleados.ID =
 //Ordenes.EmpleadoID
 //Group By Empleados.Nombre;
+//---------------------------------------------------------------------------------------------------------
+//10.Dado los elementos alojados en la variable listItems, seleccione el bloque de código que permita filtrar los
+//elementos contenidos de la variable listItems. Ejemplo: Si el usuario filtra por la cadena "Fer", se listarían
+//Fernando y Fernanda. Si inserta la cadena "do", se listarían "Fernando" y "Armando".
+
+//a.
+//for (var i = 0; i < listItems.length; i++)
+//{
+//$('#listado').append('<li
+//id = '+listItems[i]+' > '+listItems[i]+' </ li > ')
+//}
+//$('#Nombres').autocomplete({
+//source: listItems,
+//minLength: 1,
+//select: function(event, ui){
+//$('#Seleccionado').text('Seleccionado :
+//'+ui.item.label)
+//}
+//})

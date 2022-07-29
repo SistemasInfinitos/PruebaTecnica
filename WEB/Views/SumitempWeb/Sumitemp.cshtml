@@ -54,14 +54,17 @@
     ];
 
    $('#Nombres').change(function() {
-       D(listItems);
-   })
-
-    function A() {debugger
+       $('#listado').empty();
         for(var i=0;i<listItems.length;i++)
         {
             $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
         }
+       B(listItems);
+
+   })
+
+    function A() {debugger
+
         $('#Nombres').autocomplete({
             source:listItems,
             minLength:1,
@@ -72,9 +75,7 @@
     }
 
     function B() {debugger
-        for(var i=0;i<listItems.length;i++){
-            $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
-        }
+
         $('#Nombres').where({
             source:listItems,
             minLength:1,
@@ -85,9 +86,6 @@
     }
 
     function C() {debugger
-        for(var i=0;i<listItems.length;i++){
-            $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
-        }
         $('#Nombres').where ({
             source:listItems,
             minLength:1,
@@ -98,9 +96,6 @@
     }
 
     function D() {debugger
-        for(var i=listItems.length;i>0;i--){
-            $('#listado').append('<li id='+ listItems[i]+'>'+ listItems[i]+'</li>')
-        }
         $('#Nombres').autocomplete({
             source:listItems,
             minLength:1,
@@ -110,4 +105,29 @@
         })
     }
 
+    function CrearDescripcionPersonal(nombre, fechaNacimiento, identificacion, genero) 
+    {debugger
+
+        if (nombre.length < 2)
+            return { descripcionError: "el nombre no puede contener menos de 20 letras" };
+        if (nombre.match(/^([a-z])*$/)== null)
+        return { descripcionError: "el nombre no puede contener caracteres distintos a letras" };
+        if (identificacion.match(/^([0-9])*$/)==null || identificacion.length<10 || identificacion.length>20 ) {
+            return { descripcionError: "la identificacion debe contener entre 10 y 20 números" };
+        }
+        if (genero.match(/^H$|^M$/) == null) {
+           // return III
+        }
+        return {
+            nombre: nombre,
+            fechaNacimiento: fechaNacimiento,
+            identificacion: identificacion,
+            //genero: genero.includes("H") ? Genero.Hombre : Genero.Mujer
+        }
+    }
+
+    function txNombres() {
+     if ((event.keyCode != 32) && (event.keyCode < 65) || (event.keyCode > 90) && (event.keyCode < 97) || (event.keyCode > 122))
+      event.returnValue = false;
+    }
 </script>
