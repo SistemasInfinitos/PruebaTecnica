@@ -9,12 +9,26 @@
     <link rel="stylesheet" href="~/WEB.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/jquery-ui-1.13.2/jquery-ui.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/autoComplete.js-10.2.7/dist/css/autoComplete.css" asp-append-version="true" />
+        <link href="~/lib/dataTables-1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/lib//toastr.js/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <style>
+        .checkbox{
+            transform:scale(2)
+        }
+    </style>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-ui-1.13.2/jquery-ui.min.js" asp-append-version="true"></script>
     <script src="~/lib/autoComplete.js-10.2.7/dist/autoComplete.min.js" asp-append-version="true"></script>
+    <script src="~/lib/dataTables-1.11.3/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/lib/dataTables-1.11.3/js/dataTables.bootstrap5.min.js" asp-append-version="true"></script>
+    <script src="~/lib/toastr.js/toastr.min.js" asp-append-version="true"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
+    <script src="~/lib/Local//miles.js"></script>
 </head>
 <body>
     <header>
@@ -28,11 +42,12 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PersonaWEB" asp-action="Gestion">Personas</a>
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="SumitempWeb" asp-action="Sumitemp">Sumitemp Web</a>
                         </li>
+                        *@
                     </ul>
                 </div>
             </div>
