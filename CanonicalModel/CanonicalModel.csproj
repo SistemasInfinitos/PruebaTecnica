@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Entity\" />
     <Folder Include="Model\Configuration\" />
     <Folder Include="Model\Comun\" />
   </ItemGroup>

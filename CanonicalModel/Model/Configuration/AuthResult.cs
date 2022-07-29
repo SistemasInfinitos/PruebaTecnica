@@ -17,6 +17,7 @@ namespace CanonicalModel.Model.Configuration
         public bool? Success { get; set; }
         public List<string>? Errors { get; set; }
         public string? Mensaje { get; set; }
+        public string? ResponseTex { get; set; }
 
     }
 }
