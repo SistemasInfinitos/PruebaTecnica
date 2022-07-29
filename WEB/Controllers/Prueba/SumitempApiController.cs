@@ -1,9 +1,6 @@
 ﻿using CanonicalModel.Model.Configuration;
-using CanonicalModel.Model.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using System.Text.Json;
 
 namespace WEB.Controllers.Prueba
 {
@@ -27,23 +24,23 @@ namespace WEB.Controllers.Prueba
         }
         public async Task<string> Get()
         {
-            List<Persona> personas = new();
-            personas.Add(new Persona { identificacion = "79658321", nombres = "Pedro Estiven", apellidos = "Gil Barón", FechaNacimiento = DateTime2("1979,10,26") });
-            personas.Add(new Persona { identificacion = "41582329", nombres = "Ana María", apellidos = "López Torres", FechaNacimiento = DateTime2("1954,08, 12") });
-            personas.Add(new Persona { identificacion = "84632206", nombres = "Eugenio", apellidos = "Joya Rivera", FechaNacimiento = DateTime2("1984, 05, 17") });
-            personas.Add(new Persona { identificacion = "7456977", nombres = "Carol Johanna", apellidos = "Pérez Castro", FechaNacimiento = DateTime2("1975, 02,5") });
-            personas.Add(new Persona { identificacion = "15608542", nombres = "Pablo Raúl", apellidos = "Téllez Sánchez", FechaNacimiento = DateTime2("1949,01,19") });
+            List<Personas> personas = new();
+            personas.Add(new Personas { identificacion = "79658321", nombres = "Pedro Estiven", apellidos = "Gil Barón", FechaNacimiento = DateTime2("1979,10,26") });
+            personas.Add(new Personas { identificacion = "41582329", nombres = "Ana María", apellidos = "López Torres", FechaNacimiento = DateTime2("1954,08, 12") });
+            personas.Add(new Personas { identificacion = "84632206", nombres = "Eugenio", apellidos = "Joya Rivera", FechaNacimiento = DateTime2("1984, 05, 17") });
+            personas.Add(new Personas { identificacion = "7456977", nombres = "Carol Johanna", apellidos = "Pérez Castro", FechaNacimiento = DateTime2("1975, 02,5") });
+            personas.Add(new Personas { identificacion = "15608542", nombres = "Pablo Raúl", apellidos = "Téllez Sánchez", FechaNacimiento = DateTime2("1949,01,19") });
             string result = ProcesarPersona(personas);
             return result;
         }
 
-        public string ProcesarPersona(List<Persona> personas)
+        public string ProcesarPersona(List<Personas> personas)
         {
             decimal Resultado1 = 0;
             decimal Resultado2 = 0;
             int valor = 0;
             DateTime fechaActual = new DateTime(2018, 3, 23);
-            foreach (Persona p in personas)
+            foreach (Personas p in personas)
             {
                 valor = calcularEdad( p.FechaNacimiento, fechaActual);
                 if (valor > Resultado1) { Resultado1 = valor; }
@@ -74,15 +71,24 @@ namespace WEB.Controllers.Prueba
         /// </summary>
         private static void GetPersona()
         {
-            Persona p = new();
+            Personas p = new();
             DateTime fechaActual = new DateTime(2018, 3, 23);
-            p = (new Persona { identificacion = "79658321", nombres = "Pedro Estiven", apellidos = "Gil Barón", FechaNacimiento = DateTime2("1979,10,26") });
+            p = (new Personas { identificacion = "79658321", nombres = "Pedro Estiven", apellidos = "Gil Barón", FechaNacimiento = DateTime2("1979,10,26") });
 
             var A=("Identificación: { 0}; Nombres: { 1}; Apellidos: { 2}; Edad:{ 3}", p.identificacion, p.nombres, p.apellidos, calcularEdad(p.FechaNacimiento, fechaActual));
             var B=("Identificación: " +p.identificacion + " Nombres: " + p.nombres + "Apellidos: " +p.apellidos + "Edad: " +p.edad);
             var C=(String.Concat("Identificación: ", p.identificacion, "Nombres: ", p.nombres, "Apellidos: ", p.apellidos, "Edad: ", p.edad));
             //D a y b son correctas.
         }
+    }
+    public class Personas
+    {
+        public int? edad { get; set; }
+        public string? identificacion { get; set; }
+        public string? nombres { get; set; }
+        public string? apellidos { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+
     }
 }
 //1 ¿Cuál es el resultado después de ejecutar el algoritmo?
@@ -160,3 +166,9 @@ namespace WEB.Controllers.Prueba
 //'+ui.item.label)
 //}
 //})
+
+//11.Dados el siguiente código en JavaScript y las siguientes sentencias. Seleccione las sentencias que
+//al sustituirlas en el código coinciden con la funcionalidad que representa el algoritmo que valida
+//y crea un objeto que describe características de una persona.
+
+//    d. I:1, II: 3 y III:11

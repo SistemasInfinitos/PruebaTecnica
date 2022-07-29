@@ -110,7 +110,7 @@
 
         if (nombre.length < 2)
             return { descripcionError: "el nombre no puede contener menos de 20 letras" };
-        if (nombre.match(/^([a-z])*$/)== null)
+        if (nombre.match(/^[a-zA-Z]+$/)== null)
         return { descripcionError: "el nombre no puede contener caracteres distintos a letras" };
         if (identificacion.match(/^([0-9])*$/)==null || identificacion.length<10 || identificacion.length>20 ) {
             return { descripcionError: "la identificacion debe contener entre 10 y 20 números" };
