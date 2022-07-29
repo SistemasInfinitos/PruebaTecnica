@@ -135,3 +135,9 @@ namespace WEB.Controllers.Prueba
 //. Realizar una consulta que contenga el nombre del empleado y la cantidad de órdenes que tenga
 //asociadas, adicionalmente, se deben incluir los empleados que no contienen órdenes asociadas.
 //¿Cuál de las siguientes sentencias SQL, cumple con la condición anterior?:
+//d
+//SELECT Empleados.Nombre, ISNULL(Count(Ordenes.ID),0)
+//as CantidadOrden
+//FROM Empleados LEFT JOIN Ordenes ON Empleados.ID =
+//Ordenes.EmpleadoID
+//Group By Empleados.Nombre;

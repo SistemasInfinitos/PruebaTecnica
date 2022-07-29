@@ -72,3 +72,16 @@ FROM Empleados
 WHERE (datediff(yy,Empleados.FechaNacimiento,GETDATE())not Between 40 and 50)SELECT Empleados.Nombre
 FROM Empleados
 WHERE Empleados.Nombre LIKE 'Lu%';
+
+a
+SELECT Empleados.Nombre, ISNULL(Count(Ordenes.ID),0)
+as CantidadOrden
+FROM Empleados, Ordenes
+WHERE Empleados.ID = Ordenes.EmpleadoID
+Group By Empleados.Nombre;b SELECT Empleados.Nombre,(ISNULL(Count(Ordenes.ID),0)) as CantidadOrden
+FROM Empleados INNER JOIN Ordenes ON Empleados.ID =Ordenes.EmpleadoID
+Group By Empleados.Nombre;cSELECT Empleado.Nombre,
+ISNULL(Count(Orden.ID),0)) as CantidadOrden
+FROM Empleado RIGHT JOIN Orden ON Empleado.ID =
+Orden.EmpleadoID
+Group By Empleado.Nombre;

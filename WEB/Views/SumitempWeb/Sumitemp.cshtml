@@ -15,10 +15,16 @@
     </div>
 </div>
 
+<ul id="listado">
+</ul>
+<input type="text" id="Nombres" />
+<span id="Seleccionado"></span>
+
 <script>
     $(document).ready(function () {
-        Get();
+        //Get();
     })
+
     function Get() {
             $.ajax({
                 url: '/api/SumitempApi/GetTest',
@@ -37,4 +43,71 @@
                 }
             });
         }
+
+    var listItems = [
+        "Diane",
+        "Louis",
+        "Fernando",
+        "Jean",
+        "Armando",
+        "Fernanda"
+    ];
+
+   $('#Nombres').change(function() {
+       D(listItems);
+   })
+
+    function A() {debugger
+        for(var i=0;i<listItems.length;i++)
+        {
+            $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
+        }
+        $('#Nombres').autocomplete({
+            source:listItems,
+            minLength:1,
+            select:function(event,ui){
+                $('#Seleccionado').text('Seleccionado : '+ui.item.label)
+            }
+        })
+    }
+
+    function B() {debugger
+        for(var i=0;i<listItems.length;i++){
+            $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
+        }
+        $('#Nombres').where({
+            source:listItems,
+            minLength:1,
+            select:function(event,ui){
+                $('#Seleccionado').text('Seleccionado :'+ui.item.label)
+            }
+        })
+    }
+
+    function C() {debugger
+        for(var i=0;i<listItems.length;i++){
+            $('#listado').append('<li id='+listItems[i]+'>'+listItems[i]+'</li>')
+        }
+        $('#Nombres').where ({
+            source:listItems,
+            minLength:1,
+            select:function(event,ui){
+                $('#Seleccionar').text('Seleccionar :'+ui.item.label)
+            }
+        })
+    }
+
+    function D() {debugger
+        for(var i=listItems.length;i>0;i--){
+            $('#listado').append('<li id='+ listItems[i]+'>'+ listItems[i]+'</li>')
+        }
+        $('#Nombres').autocomplete({
+            source: listItems,
+            minLength:1,
+            select:function(event,ui){
+            $('#Seleccionar').text('Seleccionado :'+ui.item.label)
+            }
+        })
+    }
+
 </script>
