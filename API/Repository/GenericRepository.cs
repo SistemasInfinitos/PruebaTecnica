@@ -20,7 +20,7 @@ namespace API.Repository
 
         public async Task<int> ActualizarPersona(Personas entidad)
         {
-            using (SqlConnection con = new SqlConnection(_jwtConfig.ConnectionString))
+            using (SqlConnection con = new SqlConnection("Server=SERVER;Database=Pedalea;user=sa;Password=Bell*900715*;trustServerCertificate=true;"))
             {
                 try
                 {
@@ -75,7 +75,7 @@ namespace API.Repository
 
         public async Task<int> CrearPersona(Personas entidad)
         {
-            using (SqlConnection con = new SqlConnection(_jwtConfig.ConnectionString))
+            using (SqlConnection con = new SqlConnection("Server=SERVER;Database=Pedalea;user=sa;Password=Bell*900715*;trustServerCertificate=true;"))
             {
                 try
                 {
@@ -107,7 +107,7 @@ namespace API.Repository
         public async Task<List<Personas>> GetPersonas()
         {
             List<Personas> personas = new List<Personas>();
-            using (SqlConnection con = new SqlConnection(_jwtConfig.ConnectionString))
+            using (SqlConnection con = new SqlConnection("Server=SERVER;Database=Pedalea;user=sa;Password=Bell*900715*;trustServerCertificate=true;"))
             {
                 SqlCommand cmd = new SqlCommand("SpGetPersonas", con);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -136,7 +136,7 @@ namespace API.Repository
         public async Task<Personas> GetPersonasById(int PersonaID)
         {
             Personas personas = new Personas();
-            using (SqlConnection con = new SqlConnection(_jwtConfig.ConnectionString))
+            using (SqlConnection con = new SqlConnection("Server=SERVER;Database=Pedalea;user=sa;Password=Bell*900715*;trustServerCertificate=true;"))
             {
                 SqlCommand cmd = new SqlCommand("SpGetPersonasById", con);
                 cmd.CommandType = CommandType.StoredProcedure;
