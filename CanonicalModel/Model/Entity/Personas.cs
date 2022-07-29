@@ -17,6 +17,10 @@ namespace CanonicalModel.Model.Entity
         public string? SegundoApellido { get; set; }
         public bool? EsCliente { get; set; }
         public bool? EsProveedor { get; set; }
+        public DateTime? FechaNaciemiento { get; set; }
+        public string? Direccion { get; set; }
+        public string? Correo{ get; set; }
+        public string? Telefono { get; set; }
 
     }
 }

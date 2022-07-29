@@ -36,6 +36,10 @@ namespace API.Repository
                     cmd.Parameters.Add("@Identificacion", SqlDbType.VarChar, 15).Value = entidad.Identificacion;
                     cmd.Parameters.Add("@EsCliente", SqlDbType.Bit).Value = entidad.EsCliente;
                     cmd.Parameters.Add("@EsProveedor", SqlDbType.Bit).Value = entidad.EsProveedor;
+                    cmd.Parameters.Add("@FechaNaciemiento", SqlDbType.DateTime).Value = entidad.FechaNaciemiento;
+                    cmd.Parameters.Add("@Correo", SqlDbType.NVarChar).Value = entidad.Correo;
+                    cmd.Parameters.Add("@Direccion", SqlDbType.NVarChar).Value = entidad.Direccion;
+                    cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = entidad.Direccion;
 
                     int rowsAffected = await cmd.ExecuteNonQueryAsync();
                     con.Close();
@@ -91,6 +95,10 @@ namespace API.Repository
                     cmd.Parameters.Add("@Identificacion", SqlDbType.VarChar, 15).Value = entidad.Identificacion;
                     cmd.Parameters.Add("@EsCliente", SqlDbType.Bit).Value = entidad.EsCliente;
                     cmd.Parameters.Add("@EsProveedor", SqlDbType.Bit).Value = entidad.EsProveedor;
+                    cmd.Parameters.Add("@FechaNaciemiento", SqlDbType.DateTime).Value = entidad.FechaNaciemiento;
+                    cmd.Parameters.Add("@Correo", SqlDbType.NVarChar).Value = entidad.Correo;
+                    cmd.Parameters.Add("@Direccion", SqlDbType.NVarChar).Value = entidad.Direccion;
+                    cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = entidad.Direccion;
 
                     int rowsAffected = await cmd.ExecuteNonQueryAsync();
                     con.Close();
